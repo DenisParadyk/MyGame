@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int N = 5;
-const int M = 5;
+const int N = 3;
+const int M = 3;
 
 const int scale = 100;
 
@@ -23,14 +23,21 @@ public:
 
 	void setGamerValue(bool gamerValue);
 
+	void setWiner();
+
+	int getWiner();
+
 	int getGamerValue();
 	
 	void invert();
 
 	int value = -1;
-	int numb = 0;
+
+	static int numb;
 
 	static int gamerValue;
+
+	static int winer;
 	
 };
 

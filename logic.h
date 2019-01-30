@@ -8,22 +8,22 @@ using namespace std;
 
 class logic
 {
-private:
-
-	 
-
 public:
+
 	Varsity c[M][N], gamerVal;
 
-	void CheckVertical(int row, int col);
+	bool CheckVertical(int row, int col);
 
-	void CheckHorizontal(int row, int col);
+	bool CheckHorizontal(int row, int col);
 
-	void CheckFirstDiagonal();
+	bool CheckFirstDiagonal();
 
-	void CheckSecondDiagonal();
+	bool CheckSecondDiagonal();
 
-	void CheckDraw();
+	bool CheckDraw();
+
+	bool CheckAll(int row, int col);
+
 };
 
 #endif

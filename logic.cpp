@@ -1,17 +1,13 @@
 #include "logic.h"
 
 
-void logic::CheckVertical(int row, int col)
+bool logic::CheckVertical(int row, int col)
 {
 	bool state;
 
 	for (int i = 0; i < N; i++)
 	{
-		int a;
-		int b;
-		a = c[i][col].value;
-		b = gamerVal.getGamerValue();
-		if (a==b)
+		if (c[i][col].value == gamerVal.getGamerValue())
 		{
 			state = 0;
 		}
@@ -24,16 +20,21 @@ void logic::CheckVertical(int row, int col)
 	if (!state)
 	{
 		cout << "You have won by 'Y'" << gamerVal.getGamerValue() << endl;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void logic::CheckHorizontal(int row, int col)
+bool logic::CheckHorizontal(int row, int col)
 {
 	bool state = 0;
 
 	for (int i = 0; i < M; i++)
 	{
-		if (c[row][i].value == !gamerVal.getGamerValue()) {}
+		if (c[row][i].value == gamerVal.getGamerValue()) {}
 
 		else
 		{
@@ -44,10 +45,15 @@ void logic::CheckHorizontal(int row, int col)
 	if (!state)
 	{
 		cout << "You have won by 'X'" << gamerVal.getGamerValue() << endl;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void logic::CheckFirstDiagonal()
+bool logic::CheckFirstDiagonal()
 {
 	bool state = 0;
 
@@ -63,6 +69,11 @@ void logic::CheckFirstDiagonal()
 	if (!state)
 	{
 		cout << "Diagonal win" << gamerVal.getGamerValue() << endl;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 
 	for (int i = 0; i < M; i++)
@@ -77,13 +88,18 @@ void logic::CheckFirstDiagonal()
 	if (!state)
 	{
 		cout << "Diagonal win" << gamerVal.getGamerValue() << endl;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void logic::CheckSecondDiagonal()
+bool logic::CheckSecondDiagonal()
 {
 	bool state = 0;
-	for (int i = 0, j = M - 1; i < M; j++, i--)
+	for (int i = 0, j = M; i < M; j++, i--)
 	{
 		if (c[i][j].value == gamerVal.getGamerValue()) {}
 		else
@@ -95,13 +111,38 @@ void logic::CheckSecondDiagonal()
 	if (!state)
 	{
 		cout << "Diagonal win" << gamerVal.getGamerValue() << endl;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void logic::CheckDraw()
+bool logic::CheckDraw()
 {
-	if (gamerVal.numb > N * M - 1)
+	if (c[M][N].numb > N * M - 2)
 	{
-		cout << "Draw";
+		
+		return true;
 	}
+	else
+	{
+		return false;
+	}
+}
+
+bool logic::CheckAll(int row, int col)
+{
+	if (CheckVertical(row, col) ||
+		CheckHorizontal(row, col) ||
+		CheckFirstDiagonal()||
+		CheckSecondDiagonal()) 
+	{
+		gamerVal.setWiner();
+
+		return true;
+	}
+
+	return CheckDraw();
 }

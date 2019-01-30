@@ -1,10 +1,13 @@
 #include "FirstDisplay.h"
 
 logic FirstDisplay::check;
+int FirstDisplay::row = 0;
+int FirstDisplay::col = 0;
+
+jmp_buf env;
 
 void FirstDisplay::printConsole_map()
 {
-
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < M; j++) {
@@ -13,29 +16,31 @@ void FirstDisplay::printConsole_map()
 
 		} cout << endl;
 
-	} cout << endl;
+	} 
+	cout << endl;
 }
 
 void FirstDisplay::mouse_click(int button, int state, int x, int y)
 {
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		int row = y / scale;
-		int col = x / scale;
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) 
+	{
+		row = y / scale;
+		col = x / scale;
 
 		if (check.c[row][col].value == -1) {
 			check.c[row][col].value = check.c[row][col].getGamerValue();
 		}
 		else return;
 
-		check.CheckVertical(row, col);
-		check.CheckHorizontal(row, col);
-		check.CheckFirstDiagonal();
-		check.CheckSecondDiagonal();
-		check.CheckDraw();
-
-		check.c[row][col].invert();
 		printConsole_map();
+
+		if(check.CheckAll(row, col) == true)
+		{
+			longjmp(env, 1);
+		}
+
 		check.c[row][col].numb++;
+		check.c[row][col].invert();
 	}
 }
 

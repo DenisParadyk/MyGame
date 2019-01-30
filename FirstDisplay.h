@@ -1,11 +1,13 @@
 #ifndef FIRSTDISPLAY_H
 #define FIRSTDISPLAY_H
 
-#include <glut.h>
+ 
 #include <math.h>
+#include <csetjmp>
 #include <iostream>
 #include "varsity.h"
 #include "logic.h"
+#include <glut.h>
 
 using namespace std;
 
@@ -16,6 +18,10 @@ private:
 	static logic check;
 
 public:
+
+	static int row;
+
+	static int col;
 
 	static void printConsole_map();
 

@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClInclude Include="FirstDisplay.h" />
     <ClInclude Include="logic.h" />
+    <ClInclude Include="SecondDisplay.h" />
     <ClInclude Include="varsity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FirstDisplay.cpp" />
     <ClCompile Include="logic.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SecondDisplay.cpp" />
     <ClCompile Include="varsity.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -87,10 +89,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Projects VS17\glutdlls37beta;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects VS17\glut-3.7.6-bin;D:\Projects VS17\glutdlls37beta;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\Projects VS17\glutdlls37beta;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Projects VS17\glut-3.7.6-bin;D:\Projects VS17\glutdlls37beta;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
